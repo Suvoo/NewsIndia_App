@@ -13,6 +13,6 @@ Preview of the app :
 <img src = "screenshots/page3.png" width="190">
 <img src = "screenshots/page4.png" width="190">
 
-The API used for the news and headlines is updated regularly and supplied by
+The API used for the news and headlines is updated at regularl intervals  and keeps it updated.
 # https://newsapi.org/
 
