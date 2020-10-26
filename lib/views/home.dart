@@ -1,3 +1,4 @@
+import 'package:auto_size_text/auto_size_text.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
@@ -109,8 +110,11 @@ class CategoryTile extends StatelessWidget {
           children: <Widget>[
             ClipRRect(
                 borderRadius: BorderRadius.circular(6),
-                child: Image.network(
-                  imageUrl,
+                child: CachedNetworkImage(
+                  imageUrl: imageUrl,
+                  placeholder: (context, url) =>
+                      Center(child: CircularProgressIndicator()),
+                  errorWidget: (context, url, error) => Icon(Icons.error),
                   width: 120,
                   height: 60,
                   fit: BoxFit.cover,
@@ -154,8 +158,27 @@ class BlogTile extends StatelessWidget {
             placeholder: (context, url) => CircularProgressIndicator(),
             errorWidget: (context, url, error) => Icon(Icons.error),
           ),
-          Text(title),
-          Text(desc)
+          Padding(
+            padding:
+                EdgeInsets.only(right: 8.0, left: 8.0, top: 8.0, bottom: 6.0),
+            child: AutoSizeText(
+              title,
+              style: TextStyle(
+                fontSize: 20.0,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+          ),
+          Padding(
+            padding: EdgeInsets.only(right: 8.0, left: 8.0),
+            child: AutoSizeText(
+              desc,
+              style: TextStyle(fontSize: 15.0),
+            ),
+          ),
+          Divider(
+            thickness: 3.0,
+          )
         ],
       ),
     );
